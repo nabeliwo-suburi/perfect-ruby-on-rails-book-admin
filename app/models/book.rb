@@ -8,6 +8,8 @@ class Book < ApplicationRecord
   has_many :book_authors
   has_many :authors, through: :book_authors
 
+  enum status: %w(reservation now_on_sale end_of_print)
+
   validates :name, presence: true
   validates :name, length: { maximum: 15 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
